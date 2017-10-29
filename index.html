@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <!DOCTYPE html>
+    <title>New York Car Crash</title>
+	<style>
+
+	.routes{
+	  fill:white;
+	  fill-opacity:"1";
+	  stroke: blue;
+	  stroke-width: 0.75px;
+	  stroke-linejoin: round;
+	  stroke-linecap: round;
+	  pointer-events: none;
+	}
+	
+
+	</style>
+	<svg width="100%" height="100%"></svg>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://d3js.org/topojson.v2.min.js"></script>
+	
+	
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/sunny/jquery-ui.css">
+	
+	<script src="http://momentjs.com/downloads/moment.min.js"></script>
+	
+	<script src="http://d3js.org/d3.v3.min.js"></script>
+	<script src="http://d3js.org/topojson.v1.min.js"></script>
+	
+	
+	<script>
+	
+	var width = 1024;
+    var height = 900;
+
+	var svg = d3.select("svg");
+	
+	var projection = d3.geo.mercator()
+					.center([-74.100, 40.79])
+					.scale(80000);
+
+	var path = d3.geo.path().projection(projection);
+	
+	d3.json("/resources/nyc_road_internal.min.topojson", function(error, us) {
+	  if (error) throw error;
+
+	  svg.append("g")
+		  .attr("class", "routes")
+		.selectAll("path")
+		.data(topojson.feature(us, us.objects.collection).features)
+		.enter().append("path")
+		  .attr("d", path);
+
+	  
+	});
+
+	</script>
+  </body>
+
+</html>
