@@ -3,10 +3,8 @@ var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 var header = require('gulp-header');
 var cleanCSS = require('gulp-clean-css');
-var pug = require('gulp-pug');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
-var beautify = require('gulp-html-beautify');
 var pkg = require('./package.json');
 
 // Set the banner content
@@ -20,7 +18,7 @@ var banner = ['/*!\n',
 
 // Compiles SCSS files from /scss into /css
 gulp.task('sass', function() {
-  return gulp.src('scss/sb-admin.scss')
+  return gulp.src('scss/resume.scss')
     .pipe(sass())
     .pipe(header(banner, {
       pkg: pkg
@@ -33,7 +31,7 @@ gulp.task('sass', function() {
 
 // Minify compiled CSS
 gulp.task('minify-css', ['sass'], function() {
-  return gulp.src('css/sb-admin.css')
+  return gulp.src('css/resume.css')
     .pipe(cleanCSS({
       compatibility: 'ie8'
     }))
@@ -48,7 +46,7 @@ gulp.task('minify-css', ['sass'], function() {
 
 // Minify custom JS
 gulp.task('minify-js', function() {
-  return gulp.src(['js/**/*.js', '!js/**/*.min.js'])
+  return gulp.src('js/resume.js')
     .pipe(uglify())
     .pipe(header(banner, {
       pkg: pkg
@@ -57,17 +55,6 @@ gulp.task('minify-js', function() {
       suffix: '.min'
     }))
     .pipe(gulp.dest('js'))
-    .pipe(browserSync.reload({
-      stream: true
-    }))
-});
-
-// Compiles Pug files from /pug into the root folder and beautifies the HTML
-gulp.task('pug', function buildHTML() {
-  return gulp.src('pug/*.pug')
-    .pipe(pug())
-    .pipe(beautify())
-    .pipe(gulp.dest(''))
     .pipe(browserSync.reload({
       stream: true
     }))
@@ -100,19 +87,23 @@ gulp.task('copy', function() {
     ])
     .pipe(gulp.dest('vendor/font-awesome'))
 
-  gulp.src(['node_modules/chart.js/dist/*.js'])
-    .pipe(gulp.dest('vendor/chart.js'))
-
   gulp.src([
-      'node_modules/datatables.net/js/*.js',
-      'node_modules/datatables.net-bs4/js/*.js',
-      'node_modules/datatables.net-bs4/css/*.css'
+      'node_modules/devicons/**/*',
+      '!node_modules/devicons/*.json',
+      '!node_modules/devicons/*.md',
+      '!node_modules/devicons/!PNG',
+      '!node_modules/devicons/!PNG/**/*',
+      '!node_modules/devicons/!SVG',
+      '!node_modules/devicons/!SVG/**/*'
     ])
-    .pipe(gulp.dest('vendor/datatables/'))
+    .pipe(gulp.dest('vendor/devicons'))
+
+  gulp.src(['node_modules/simple-line-icons/**/*', '!node_modules/simple-line-icons/*.json', '!node_modules/simple-line-icons/*.md'])
+    .pipe(gulp.dest('vendor/simple-line-icons'))
 })
 
 // Default task
-gulp.task('default', ['sass', 'minify-css', 'minify-js', 'pug', 'copy']);
+gulp.task('default', ['sass', 'minify-css', 'minify-js', 'copy']);
 
 // Configure the browserSync task
 gulp.task('browserSync', function() {
@@ -124,9 +115,8 @@ gulp.task('browserSync', function() {
 })
 
 // Dev task with browserSync
-gulp.task('dev', ['browserSync', 'sass', 'minify-css', 'minify-js', 'pug'], function() {
-  gulp.watch('scss/**/*', ['sass']);
-  gulp.watch('pug/**/*', ['pug']);
+gulp.task('dev', ['browserSync', 'sass', 'minify-css', 'minify-js'], function() {
+  gulp.watch('scss/*.scss', ['sass']);
   gulp.watch('css/*.css', ['minify-css']);
   gulp.watch('js/*.js', ['minify-js']);
   // Reloads the browser whenever HTML or JS files change
