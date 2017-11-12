@@ -1,11 +1,8 @@
 $(document).ready(function(){
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
       var options={
-        format: 'mm/dd/yyyy',
-        container: container,
+        format: 'dd/mm/yyyy',
         todayHighlight: true,
-        autoclose: true,
+        autoclose: true
       };
-      $('input[name="date"]').datepicker(options);
-      $('input[name="date2"]').datepicker(options);
+      $('#street_date_to,#street_date_from').datepicker(options);
 })

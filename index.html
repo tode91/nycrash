@@ -10,6 +10,8 @@
 
     <title>NYC Car Crash</title>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template -->
@@ -18,6 +20,7 @@
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="vendor/devicons/css/devicons.min.css" rel="stylesheet">
     <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    
 
     <!-- Custom styles for this template -->
     <link href="css/resume.css" rel="stylesheet">
@@ -41,7 +44,6 @@
 	
 	<!-- Bootstrap Date-Picker Plugin -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
   </head>
 
@@ -133,10 +135,10 @@
       <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
         <div class="my-auto">
         
-          <h2 class="mb-5">Street Safety Analytics</h2>
+          <h2 class="mb-3">Street Safety Analytics</h2>
 
           <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
+            <div class="resume-content mr-auto border_graph">
               <!--<h3 class="mb-0">Junior Web Designer</h3>
               <div class="subheading mb-3">Shout! Media Productions</div> -->
 			  <svg  class="graph_area"></svg>
@@ -147,10 +149,16 @@
 		        			 <h3>Date Selection:</h3>
 		            </li>
 		            <li >
-		        			<input class="form-control" id="street_date_from" name="date_from" placeholder="From: MM/DD/YYY" type="text"/>
+		        			 <h5 class="subheading">From&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DD/MM/YYYY</h5>
 		            </li>
 		            <li >
-		        			<input class="form-control" id="street_date_to" name="date_to" placeholder="To: MM/DD/YYY" type="text" />
+		        			<input class="form-control" id="street_date_from" name="date_from" placeholder="From DD/MM/YYY" type="text"/>
+		            </li>
+		            <li >
+		        			 <h5 class="subheading">To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DD/MM/YYYY</h5>
+		            </li>
+		            <li>
+		        			<input class="form-control" id="street_date_to" name="date_to" placeholder="To: DD/MM/YYY" type="text" />
 		            </li>
 		            <li>
 		        			<button class="btn btn-primary " id="street_apply" type="submit">Apply</button>
