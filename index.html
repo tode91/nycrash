@@ -10,7 +10,7 @@
 
     <title>NYC Car Crash</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.standalone.min.css"/>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
     
 
     <!-- Custom styles for this template -->
-    <link href="css/resume.css" rel="stylesheet">
+    <link href="css/nyc.css" rel="stylesheet">
     <link href="nyc_style.css" rel="stylesheet">
 	
 	 <!-- Bootstrap core JavaScript -->
@@ -35,7 +35,6 @@
 
     <!-- Custom scripts for this template -->
     <script src="http://momentjs.com/downloads/moment.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<script src="https://d3js.org/topojson.v2.min.js"></script>
 	<script src="http://d3js.org/d3.v3.min.js"></script>
@@ -43,7 +42,7 @@
 	<script src="http://d3js.org/queue.v1.min.js"></script>
 	
 	<!-- Bootstrap Date-Picker Plugin -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 
   </head>
 
@@ -86,7 +85,7 @@
 
     <div class="container-fluid p-0">
 
-      <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+      <section class="nyc-section p-3 p-lg-5 d-flex d-column" id="about">
         <div class="my-auto">
           <h1 class="mb-0">Clarence
             <span class="text-primary">Taylor</span>
@@ -132,41 +131,36 @@
         </div>
       </section>
 
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
+      <section class="nyc-section p-3 p-lg-5 d-flex flex-column" id="experience">
         <div class="my-auto">
         
           <h2 class="mb-3">Street Safety Analytics</h2>
 
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto border_graph">
+          <div class="nyc-item d-flex flex-column flex-md-row mb-5">
               <!--<h3 class="mb-0">Junior Web Designer</h3>
               <div class="subheading mb-3">Shout! Media Productions</div> -->
-			  <svg  class="graph_area"></svg>
-            </div>
-            <div class="resume-date text-md-right">
-				<ul class="list-inline list-icons" style="text-align: right;">
+			  <svg id="street_map" class="graph_area"></svg>
+            <div class="nyc-date text-md-right">
+				<ul class="list-inline list-icons" style="text-align: right;margin-left:0.5em">
 		            <li >
 		        			 <h3>Date Selection:</h3>
 		            </li>
 		            <li >
-		        			 <h5 class="subheading">From&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DD/MM/YYYY</h5>
+			            <div class="input-group input-daterange">
+						    <input type="text" class="form-control" id ="street_date_from" value="2012-04-05">
+						    <div class="input-group-addon">to</div>
+						    <input type="text" class="form-control" id ="street_date_to" value="2012-04-19">
+						</div>
 		            </li>
-		            <li >
-		        			<input class="form-control" id="street_date_from" name="date_from" placeholder="From DD/MM/YYY" type="text"/>
-		            </li>
-		            <li >
-		        			 <h5 class="subheading">To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DD/MM/YYYY</h5>
-		            </li>
-		            <li>
-		        			<input class="form-control" id="street_date_to" name="date_to" placeholder="To: DD/MM/YYY" type="text" />
-		            </li>
+		            
+		            
 		            <li>
 		        			<button class="btn btn-primary " id="street_apply" type="submit">Apply</button>
 		            </li>
-	            </ul>
-	            <div class="loader"></div>
-	            <hr></hr>
-	            <ul class="fa-ul mb-0" style="text-align: right;">
+		            <li>
+	            <div id="street_loader" class="loader"></div>
+	           </li>
+	           <li><hr></li>
 		            <li >
 		        			 <h3>KPI:</h3>
 		            </li>
@@ -189,29 +183,29 @@
 
       </section>
 
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
+      <section class="nyc-section p-3 p-lg-5 d-flex flex-column" id="education">
         <div class="my-auto">
           <h2 class="mb-5">Education</h2>
 
-          <div class="resume-item d-flex flex-column flex-md-row mb-5">
-            <div class="resume-content mr-auto">
+          <div class="nyc-item d-flex flex-column flex-md-row mb-5">
+            <div class="nyc-content mr-auto">
               <h3 class="mb-0">University of Colorado Boulder</h3>
               <div class="subheading mb-3">Bachelor of Science</div>
               <div>Computer Science - Web Development Track</div>
               <p>GPA: 3.23</p>
             </div>
-            <div class="resume-date text-md-right">
+            <div class="nyc-date text-md-right">
               <span class="text-primary">August 2006 - May 2010</span>
             </div>
           </div>
 
-          <div class="resume-item d-flex flex-column flex-md-row">
-            <div class="resume-content mr-auto">
+          <div class="nyc-item d-flex flex-column flex-md-row">
+            <div class="nyc-content mr-auto">
               <h3 class="mb-0">James Buchanan High School</h3>
               <div class="subheading mb-3">Technology Magnet Program</div>
               <p>GPA: 3.56</p>
             </div>
-            <div class="resume-date text-md-right">
+            <div class="nyc-date text-md-right">
               <span class="text-primary">August 2002 - May 2006</span>
             </div>
           </div>
@@ -219,7 +213,7 @@
         </div>
       </section>
 
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
+      <section class="nyc-section p-3 p-lg-5 d-flex flex-column" id="skills">
         <div class="my-auto">
           <h2 class="mb-5">Skills</h2>
 
@@ -278,7 +272,7 @@
         </div>
       </section>
 
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="interests">
+      <section class="nyc-section p-3 p-lg-5 d-flex flex-column" id="interests">
         <div class="my-auto">
           <h2 class="mb-5">Interests</h2>
           <p>Apart from being a web developer, I enjoy most of my time being outdoors. In the winter, I am an avid skiier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain biking, free climbing, and kayaking.</p>
@@ -286,7 +280,7 @@
         </div>
       </section>
 
-      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="awards">
+      <section class="nyc-section p-3 p-lg-5 d-flex flex-column" id="awards">
         <div class="my-auto">
           <h2 class="mb-5">Awards &amp; Certifications</h2>
           <ul class="fa-ul mb-0">
@@ -325,7 +319,7 @@
 
 </body>
 
- 	<script src="js/resume.min.js"></script>
+ 	<script src="js/nyc.min.js"></script>
  	<script src="js/nyc_maps.js"></script>
 
  	

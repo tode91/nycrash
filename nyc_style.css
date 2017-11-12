@@ -1,13 +1,11 @@
 
 .graph_area{
 	height:650px;
-	width:750px;
+	width:950px;
+	background-color:rgba(0,0,0,.03);
+	border:1px solid #ced4da;
+	
 }
-
-.border_graph{
-border:1px solid #ced4da;
-}
-
 
 .map{
 	background-color:rgba(0,0,0,.03);
@@ -19,7 +17,7 @@ border:1px solid #ced4da;
 .street{
   fill:none;
   stroke:#00cc00;
-  stroke-width: 0.25px;
+  stroke-width: 0.17px;
   stroke-linejoin: round;
   stroke-linecap: round;
 }

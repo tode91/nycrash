@@ -1,7 +1,7 @@
 /*!
- * Start Bootstrap - Resume v4.0.0-beta.2 (https://startbootstrap.com/template-overviews/resume)
+ * Start Bootstrap - nyc v4.0.0-beta.2 (https://startbootstrap.com/template-overviews/nyc)
  * Copyright 2013-2017 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-resume/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-nyc/blob/master/LICENSE)
  */
 body {
   font-family: 'Open Sans', serif;
@@ -85,21 +85,21 @@ h2 {
           #sideNav .navbar-collapse .navbar-nav .nav-item .nav-link {
             display: block; } }
 
-section.resume-section {
+section.nyc-section {
   border-bottom: 1px solid #dee2e6;
   padding-top: 5rem !important;
   padding-bottom: 5rem !important; }
-  section.resume-section .resume-item .resume-date {
+  section.nyc-section .nyc-item .nyc-date {
     min-width: none; }
 
 @media (min-width: 768px) {
-  section.resume-section {
+  section.nyc-section {
     min-height: 100vh; }
-    section.resume-section .resume-item .resume-date {
+    section.nyc-section .nyc-item .nyc-date {
       min-width: 18rem; } }
 
 @media (min-width: 992px) {
-  section.resume-section {
+  section.nyc-section {
     padding-top: 3rem !important;
     padding-bottom: 3rem !important; } }
 
