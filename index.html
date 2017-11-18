@@ -15,6 +15,8 @@
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template -->
+    
+    
     <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -22,7 +24,7 @@
     <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
     
 
-    
+    <link href="glyphicons/css/glyphicons.css" rel="stylesheet">
 	
 	 <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -44,6 +46,18 @@
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css" />
+	
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+	
+	<!-- Latest compiled and minified Locales -->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+	
+	
 	
 	<!-- Custom styles for this template -->
     <link href="css/nyc.css" rel="stylesheet">
@@ -141,12 +155,12 @@
         
           <h2 class="mb-3">Street Safety Analytics</h2>
 
-          <div class="nyc-item d-flex flex-column flex-md-row mb-5">
+          <div class="nyc-item d-flex flex-column flex-md-row mb-5" style="margin-bottom:0rem!important">
               <!--<h3 class="mb-0">Junior Web Designer</h3>
               <div class="subheading mb-3">Shout! Media Productions</div> -->
 			  <svg id="street_map" class="graph_area"></svg>
             <div class="nyc-date text-md-right">
-				<ul class="list-inline list-icons" style="text-align: right;margin-left:0.5em;width:350px">
+				<ul class="list-inline list-icons" style="text-align: right;margin-left:1em;">
 		            <li >
 		        			 <h3>Date:</h3>
 		            </li>
@@ -186,17 +200,12 @@
 		            </li>
 		            <li class="sliders_street"><svg id="legend_street_map" class="legend_map"></svg>
 		            </li>
-		            
-		            <li><hr></hr></li>
-		            <li >
-		            </li>
-		            <li >
-		            </li>
-		            
 	            </ul>           
             </div>
           </div>
-
+          <div class="nyc-item d-flex flex-column flex-md-row mb-5 text-primary" style="margin-top:-3em">
+          	<table id="table_street"></table>
+		  </div>
         </div>
 
       </section>
@@ -206,12 +215,12 @@
         
           <h2 class="mb-3">Area Safety Analytics</h2>
 
-          <div class="nyc-item d-flex flex-column flex-md-row mb-5">
+          <div class="nyc-item d-flex flex-column flex-md-row mb-5" style="margin-bottom:0rem!important">
               <!--<h3 class="mb-0">Junior Web Designer</h3>
               <div class="subheading mb-3">Shout! Media Productions</div> -->
 			  <svg id="area_map" class="graph_area"></svg>
             <div class="nyc-date text-md-right">
-				<ul class="list-inline list-icons" style="text-align: right;margin-left:0.5em;width:350px">
+				<ul class="list-inline list-icons" style="text-align: right;margin-left:0.5em;">
 		            <li >
 		        			 <h3>Date:</h3>
 		            </li>
@@ -251,17 +260,12 @@
 		            </li>
 		            <li class="sliders_area"><svg id="legend_area_map" class="legend_map"></svg>
 		            </li>
-		            
-		            <li><hr></hr></li>
-		            <li >
-		            </li>
-		            <li >
-		            </li>
-		            
 	            </ul>           
             </div>
           </div>
-
+		  <div class="nyc-item d-flex flex-column flex-md-row mb-5 text-primary" style="margin-top:-3em">
+          	<table id="table_area"></table>
+		  </div>
         </div>
 
       </section>

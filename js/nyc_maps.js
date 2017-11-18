@@ -9,6 +9,8 @@ var colorRange = ["#ffff00", "#cc0000"];
 var data_street;
 var data_area;
 
+var kpi_column_list=[]
+
 $(document).ready(function(){
 	var options={
 		format: 'dd/mm/yyyy',
@@ -55,10 +57,10 @@ $(document).ready(function(){
 			$.each(data_street, function(index, item){
 				var kpi= $("#street_kpi_list").val()
 				if(slideEvt.value[0] == 0 && item[kpi]>slideEvt.value[1] ){
-						$("#street_id_"+item._id).css("opacity","0")
+						$("#street_id_"+item._id.id).css("opacity","0")
 				}
 				if(slideEvt.value[0] != 0 && item[kpi]>=slideEvt.value[0] && item[kpi]<=slideEvt.value[1] ){
-					$("#street_id_"+item._id).css("opacity","1")
+					$("#street_id_"+item._id.id).css("opacity","1")
 				}
 			})
 		}
@@ -100,6 +102,7 @@ $(document).ready(function(){
 			})
 		}
 	})
+	
 	  
 	postRequest("dashboardsParameters",{},dahboardParams)
 	
@@ -207,7 +210,7 @@ function drawColorScale(selector,selector_slider,selector_scale) {
   
   var value_slider=$(selector_slider).slider("getValue")
   var max = value_slider[1]
-  var interval = max / 35
+  var interval = max / 34
   var data_legend= [];
   for(var i=0;i<35;i++){
 	  data_legend.push(i*interval)
@@ -255,7 +258,6 @@ function mapStreetCallback(data){
 	$("#street_kpi_slider_range").text($("#street_kpi_slider").slider("getValue"));
 	
 	if((min == max && max == 0) == false){
-		//var color = d3.scale.log().domain([min+1,max+1]).range(colorRange).interpolate(d3.interpolateHcl);
 		updateColorMapStreet(data, "#street_kpi_slider",  "#street_scale_list","#street_kpi_list")
 	}	
 	drawColorScale("#legend_street_map","#street_kpi_slider","#street_scale_list")
@@ -263,14 +265,98 @@ function mapStreetCallback(data){
 	$("#street_loader").slideUp();
 	$("#street_kpi_slider").slider("enable")
 	$(".sliders_street").show()
-
+	
+	/*** TABLES ***/
+	$('#table_street').bootstrapTable({
+		icons:{
+			  paginationSwitchDown: 'glyphicon-collapse-down icon-chevron-down',
+			  paginationSwitchUp: 'glyphicon-collapse-up icon-chevron-up',
+			  refresh: 'glyphicon-refresh icon-refresh',
+			  toggle: 'glyphicon-list-alt icon-list-alt',
+			  columns: 'glyphicon-th icon-th',
+			  detailOpen: 'glyphicon-plus icon-plus',
+			  detailClose: 'glyphicon-minus icon-minus'
+			},
+		showColumns:true,
+		showToggle:true,
+		clickToSelect:true,
+		
+		columns: [
+			{checkbox:true},
+			{field: '_id.id',
+	        title: 'ID Street',
+		    sortable:true,
+		    visible:true,
+		    align:"left"},
+		    {field: '_id.name',
+		        title: 'Street Name',
+			    sortable:true,
+			    visible:true,
+			    align:"left"},
+		    {field: 'crash',
+			        title: 'Crash',
+				    sortable:true,
+				    visible:true,
+				    align:"right"},
+		    {field: 'person_injured',
+		        title: 'Person Injured',
+			    sortable:true,
+			    visible:true,
+			    align:"right"},
+		    {field: 'person_killed',
+		        title: 'Person Killed',
+			    sortable:true,
+			    align:"right"},
+		    {field: 'pedestrian_injured',
+		        title: 'Pedestrian Injured',
+			    sortable:true,
+			    visible:false,
+			    align:"right"},
+		    {field: 'pedestrian_killed',
+		        title: 'Pedestrian Killed',
+			    sortable:true,
+			    visible:false,
+			    align:"right"},
+		    {field: 'cyclist_injured',
+		        title: 'Cyclist Injured',
+			    sortable:true,
+			    visible:false,
+			    align:"right"},
+		    {field: 'cyclist_killed',
+		        title: 'Cyclist Killed',
+			    sortable:true,
+			    visible:false,
+			    align:"right"},
+			    
+		    {field: 'motorist_injured',
+		        title: 'Motorist Injured',
+			    sortable:true,
+			    visible:true,
+			    align:"right"},
+		    {field: 'motorist_killed',
+		        title: 'Motorist Killed',
+			    sortable:true,
+			    visible:true,
+			    align:"right"},
+		],
+	    pagination:true,
+	    locale:'en-US',
+	    striped:true,
+	    search:true,
+	    onCheck: function (item) {$("#street_id_"+item._id.id).css("stroke-width",5);},
+	    onUncheck: function (item) {$("#street_id_"+item._id.id).css("stroke-width",0.25);},
+	    	onCheckAll:function (itemList) {$.each(itemList, function(index,item){ $("#street_id_"+item._id.id).css("stroke-width",5);})},
+	    	onUncheckAll: function (itemList) {$.each(itemList, function(index, item){$("#street_id_"+item._id.id).css("stroke-width",0.25);})}
+	});
+	
+	$('#table_street').bootstrapTable('load',data);
 }
 
 function getColorScale(selector, max){
 	var scale= $(selector).val()
-	if (scale == "logaritmic") return d3.scale.log().domain([1,max]).range(colorRange).interpolate(d3.interpolateHcl);
-	else if (scale == "linear") return d3.scale.linear().domain([1,max]).range(colorRange).interpolate(d3.interpolateHcl);
-	else if (scale == "sqrt") return d3.scale.sqrt().domain([1,max]).range(colorRange).interpolate(d3.interpolateHcl);
+	if (scale == "logaritmic") return d3.scale.log().domain([1,max]).range(colorRange).interpolate(d3.interpolateHsl);
+	else if (scale == "linear") return d3.scale.linear().domain([1,max]).range(colorRange).interpolate(d3.interpolateHsl);
+	else if (scale == "sqrt") return d3.scale.sqrt().domain([1,max]).range(colorRange).interpolate(d3.interpolateHsl);
 }
 
 function updateColorMapStreet(data, selector_slider,  selector_scale, selector_kpi){
@@ -279,9 +365,9 @@ function updateColorMapStreet(data, selector_slider,  selector_scale, selector_k
 	var color = getColorScale(selector_scale,max)
 	$.each(data, function(index, item){
 		if(item[kpi]>0){
-			$("#street_id_"+item._id).css("stroke",color(item[kpi]))
+			$("#street_id_"+item._id.id).css("stroke",color(item[kpi]))
 		}else{
-			$("#street_id_"+item._id).css("stroke","#00cc00")
+			$("#street_id_"+item._id.id).css("stroke","#00cc00")
 		}
 	})
 }
@@ -349,7 +435,6 @@ function mapAreaCallback(data){
 	$("#area_kpi_slider_range").text($("#area_kpi_slider").slider("getValue"));
 	
 	if((min == max && max == 0) == false){
-		//var color = d3.scale.log().domain([min+1,max+1]).range(colorRange).interpolate(d3.interpolateHcl);
 		updateColorMapArea(data, "#area_kpi_slider",  "#area_scale_list","#area_kpi_list")
 	}	
 	drawColorScale("#legend_area_map","#area_kpi_slider","#area_scale_list")
@@ -357,6 +442,91 @@ function mapAreaCallback(data){
 	$("#area_loader").slideUp();
 	$("#area_kpi_slider").slider("enable")
 	$(".sliders_area").show()
+	
+	/*** TABLES ***/
+	$('#table_area').bootstrapTable({
+		icons:{
+			  paginationSwitchDown: 'glyphicon-collapse-down icon-chevron-down',
+			  paginationSwitchUp: 'glyphicon-collapse-up icon-chevron-up',
+			  refresh: 'glyphicon-refresh icon-refresh',
+			  toggle: 'glyphicon-list-alt icon-list-alt',
+			  columns: 'glyphicon-th icon-th',
+			  detailOpen: 'glyphicon-plus icon-plus',
+			  detailClose: 'glyphicon-minus icon-minus'
+			},
+		showColumns:true,
+		showToggle:true,
+		clickToSelect:true,
+		
+		columns: [
+			{checkbox:true},
+			{field: '_id',
+	        title: 'ID Area',
+		    sortable:true,
+		    visible:true,
+		    align:"left"},
+		    {field: 'name',
+		        title: 'Area Name',
+			    sortable:true,
+			    visible:true,
+			    align:"left"},
+		    {field: 'crash',
+			        title: 'Crash',
+				    sortable:true,
+				    visible:true,
+				    align:"right"},
+		    {field: 'person_injured',
+		        title: 'Person Injured',
+			    sortable:true,
+			    visible:true,
+			    align:"right"},
+		    {field: 'person_killed',
+		        title: 'Person Killed',
+			    sortable:true,
+			    align:"right"},
+		    {field: 'pedestrian_injured',
+		        title: 'Pedestrian Injured',
+			    sortable:true,
+			    visible:false,
+			    align:"right"},
+		    {field: 'pedestrian_killed',
+		        title: 'Pedestrian Killed',
+			    sortable:true,
+			    visible:false,
+			    align:"right"},
+		    {field: 'cyclist_injured',
+		        title: 'Cyclist Injured',
+			    sortable:true,
+			    visible:false,
+			    align:"right"},
+		    {field: 'cyclist_killed',
+		        title: 'Cyclist Killed',
+			    sortable:true,
+			    visible:false,
+			    align:"right"},
+			    
+		    {field: 'motorist_injured',
+		        title: 'Motorist Injured',
+			    sortable:true,
+			    visible:true,
+			    align:"right"},
+		    {field: 'motorist_killed',
+		        title: 'Motorist Killed',
+			    sortable:true,
+			    visible:true,
+			    align:"right"},
+		],
+	    pagination:true,
+	    locale:'en-US',
+	    striped:true,
+	    search:true,
+	    onCheck: function (item) {$("#area_id_"+item._id).css("stroke-width",5);},
+	    onUncheck: function (item) {$("#area_id_"+item._id).css("stroke-width",0.25);},
+	    	onCheckAll:function (itemList) {$.each(itemList, function(index,item){ $("#area_id_"+item._id).css("stroke-width",5);})},
+	    	onUncheckAll: function (itemList) {$.each(itemList, function(index, item){$("#area_id_"+item._id).css("stroke-width",0.25);})}
+	});
+	
+	$('#table_area').bootstrapTable('load',data);
 
 }
 
@@ -373,3 +543,6 @@ function updateColorMapArea(data, selector_slider,  selector_scale, selector_kpi
 		}
 	})
 }
+
+
+/******/

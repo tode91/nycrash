@@ -24,6 +24,7 @@
   stroke-width: 0.25px;
   stroke-linejoin: round;
   stroke-linecap: round;
+  
 }
 
 
@@ -36,16 +37,16 @@
 }
 
 .nyc{
-  fill: rgba(0,0,0,.9);		
-  stroke: rgba(0,0,0,.9);
+  fill: #082952;		
+  stroke: #082952;
   stroke-width: 0.5px;
   stroke-linejoin: round;
   stroke-linecap: round;
 }
 
 .subarea{
-  fill:#00cc00;
-  stroke: #00cc00;
+  fill:#082952;
+  stroke: #082952;
   stroke-width: 0.5px;
   stroke-linejoin: round;
   stroke-linecap: round;
@@ -53,8 +54,7 @@
 
 hr{
 	color:#082952;
-	background-color:#082952;
-	
+	background-color:#082952;	
 }
 
 .loader {
@@ -83,4 +83,13 @@ hr{
 
 .slider.slider-horizontal{
 	width:100%
+}
+
+
+.bootstrap-table{
+	width:100%
+}
+
+.bootstrap-table.table{
+	border:1px solid #082952;
 }
