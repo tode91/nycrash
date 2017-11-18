@@ -22,9 +22,7 @@
     <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
     
 
-    <!-- Custom styles for this template -->
-    <link href="css/nyc.css" rel="stylesheet">
-    <link href="nyc_style.css" rel="stylesheet">
+    
 	
 	 <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -42,8 +40,15 @@
 	<script src="http://d3js.org/queue.v1.min.js"></script>
 	
 	<!-- Bootstrap Date-Picker Plugin -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/bootstrap-slider.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.0/css/bootstrap-slider.min.css" />
+	
+	<!-- Custom styles for this template -->
+    <link href="css/nyc.css" rel="stylesheet">
+    <link href="nyc_style.css" rel="stylesheet">
+	
   </head>
 
   <body id="page-top">
@@ -141,9 +146,9 @@
               <div class="subheading mb-3">Shout! Media Productions</div> -->
 			  <svg id="street_map" class="graph_area"></svg>
             <div class="nyc-date text-md-right">
-				<ul class="list-inline list-icons" style="text-align: right;margin-left:0.5em">
+				<ul class="list-inline list-icons" style="text-align: right;margin-left:0.5em;width:350px">
 		            <li >
-		        			 <h3>Date Selection:</h3>
+		        			 <h3>Date:</h3>
 		            </li>
 		            <li >
 			            <div class="input-group input-daterange">
@@ -167,12 +172,90 @@
 		            <li >
 		        			<select class="form-control" id="street_kpi_list" ></select>
 		            </li>
+		            <li class="sliders_street">
+		            		<input id="street_kpi_slider" type="text" class="nyc_slider" data-slider-step="1" data-slider-value="[0,1000]"  style="width:'100%''"/>
+		            </li>
+		            <li class="sliders_street">
+						<h4>Selected range:&nbsp;<span id="street_kpi_slider_range" class="subheading"></span></h4>
+		            </li>
+		            <li class="sliders_street">
+		        			<h3>SCALE:</h3>
+		            </li>
+		            <li class="sliders_street">
+		        			<select class="form-control" id="street_scale_list" ></select>
+		            </li>
+		            <li class="sliders_street"><svg id="legend_street_map" class="legend_map"></svg>
+		            </li>
+		            
 		            <li><hr></hr></li>
 		            <li >
-		        			 <h3>Scale:</h3>
 		            </li>
 		            <li >
-		        			<select class="form-control" id="street_scale_list" ></select>
+		            </li>
+		            
+	            </ul>           
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+      
+      <section class="nyc-section p-3 p-lg-5 d-flex flex-column" id="experience">
+        <div class="my-auto">
+        
+          <h2 class="mb-3">Area Safety Analytics</h2>
+
+          <div class="nyc-item d-flex flex-column flex-md-row mb-5">
+              <!--<h3 class="mb-0">Junior Web Designer</h3>
+              <div class="subheading mb-3">Shout! Media Productions</div> -->
+			  <svg id="area_map" class="graph_area"></svg>
+            <div class="nyc-date text-md-right">
+				<ul class="list-inline list-icons" style="text-align: right;margin-left:0.5em;width:350px">
+		            <li >
+		        			 <h3>Date:</h3>
+		            </li>
+		            <li >
+			            <div class="input-group input-daterange">
+						    <input type="text" class="form-control" id ="area_date_from" value="2012-04-05">
+						    <div class="input-group-addon">to</div>
+						    <input type="text" class="form-control" id ="area_date_to" value="2012-04-19">
+						</div>
+		            </li>
+		            
+		            
+		            <li>
+		        			<button class="btn btn-primary " id="area_apply" type="submit">Apply</button>
+		            </li>
+		            <li>
+	            <div id="area_loader" class="loader"></div>
+	           </li>
+	           <li><hr></li>
+		            <li >
+		        			 <h3>KPI:</h3>
+		            </li>
+		            <li >
+		        			<select class="form-control" id="area_kpi_list" ></select>
+		            </li>
+		            <li class="sliders_area">
+		            		<input id="area_kpi_slider" type="text" class="nyc_slider" data-slider-step="1" data-slider-value="[0,1000]"  style="width:'100%''"/>
+		            </li>
+		            <li class="sliders_area">
+						<h4>Selected range:&nbsp;<span id="area_kpi_slider_range" class="subheading"></span></h4>
+		            </li>
+		            <li class="sliders_area">
+		        			<h3>SCALE:</h3>
+		            </li>
+		            <li class="sliders_area">
+		        			<select class="form-control" id="area_scale_list" ></select>
+		            </li>
+		            <li class="sliders_area"><svg id="legend_area_map" class="legend_map"></svg>
+		            </li>
+		            
+		            <li><hr></hr></li>
+		            <li >
+		            </li>
+		            <li >
 		            </li>
 		            
 	            </ul>           

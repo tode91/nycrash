@@ -1,23 +1,27 @@
 
 .graph_area{
 	height:650px;
-	width:950px;
-	background-color:rgba(0,0,0,.03);
+	width:750px;
 	border:1px solid #ced4da;
-	
 }
 
 .map{
-	background-color:rgba(0,0,0,.03);
 	width:"100%"; 
 	height:"100%";
 	
 }
 
+.legend_map{
+	width:370px;
+	height:30px;
+}
+
+
+
 .street{
   fill:none;
-  stroke:#00cc00;
-  stroke-width: 0.17px;
+  stroke:white;
+  stroke-width: 0.25px;
   stroke-linejoin: round;
   stroke-linecap: round;
 }
@@ -25,7 +29,6 @@
 
 .area{
   fill: rgba(0,0,0,.05);
-  fill-opacity:"0.01";
   stroke: rgba(0,0,0,.1);
   stroke-width: 0.1px;
   stroke-linejoin: round;
@@ -33,22 +36,26 @@
 }
 
 .nyc{
-  fill: rgba(0,0,0,.01);		
-  stroke: rgba(0,0,0,.1);
+  fill: rgba(0,0,0,.9);		
+  stroke: rgba(0,0,0,.9);
   stroke-width: 0.5px;
   stroke-linejoin: round;
   stroke-linecap: round;
 }
 
-.zipcode{
-  fill:rgba(0,0,0,.1);
-  stroke: rgba(0,0,0,.1);
-  stroke-width: 0.25px;
+.subarea{
+  fill:#00cc00;
+  stroke: #00cc00;
+  stroke-width: 0.5px;
   stroke-linejoin: round;
   stroke-linecap: round;
 }
 
-
+hr{
+	color:#082952;
+	background-color:#082952;
+	
+}
 
 .loader {
   margin-right:0;
@@ -71,4 +78,9 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+
+.slider.slider-horizontal{
+	width:100%
 }
