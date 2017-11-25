@@ -112,3 +112,8 @@ section{
 .panel_graph{
 	width:32%;
 }
+
+
+select {
+  direction: rtl;
+}
