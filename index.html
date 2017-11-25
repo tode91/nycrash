@@ -84,10 +84,10 @@
             <a class="nav-link js-scroll-trigger" href="#about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#experience">Street Safety</a>
+            <a class="nav-link js-scroll-trigger" href="#link_street_section">NYC Streets</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#education">Area Safety</a>
+            <a class="nav-link js-scroll-trigger" href="#link_area_section">NYC Areas</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
@@ -102,7 +102,7 @@
       </div>
     </nav>
 
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0 container">
 
       <section class="nyc-section p-3 p-lg-5 d-flex d-column" id="about">
         <div class="my-auto">
@@ -150,17 +150,17 @@
         </div>
       </section>
 
-      <section class="nyc-section p-3 p-lg-5 d-flex flex-column" id="experience">
+      <section class="nyc-section p-3 p-lg-5 d-flex flex-column" id="link_street_section">
         <div class="my-auto">
         
-          <h2 class="mb-3">Street Safety Analytics</h2>
+          <h2 class="mb-3 text-primary">Street Safety Analytics</h2>
 
           <div class="nyc-item d-flex flex-column flex-md-row mb-5" style="margin-bottom:0rem!important">
               <!--<h3 class="mb-0">Junior Web Designer</h3>
               <div class="subheading mb-3">Shout! Media Productions</div> -->
 			  <svg id="street_map" class="graph_area"></svg>
-            <div class="nyc-date text-md-right">
-				<ul class="list-inline list-icons" style="text-align: right;margin-left:1em;">
+            <div class="nyc-date text-md-right panel_graph">
+				<ul class="list-inline list-icons" style="text-align: right;margin-left:0.3em">
 		            <li >
 		        			 <h3>Date:</h3>
 		            </li>
@@ -186,12 +186,8 @@
 		            <li >
 		        			<select class="form-control" id="street_kpi_list" ></select>
 		            </li>
-		            <li class="sliders_street">
-		            		<input id="street_kpi_slider" type="text" class="nyc_slider" data-slider-step="1" data-slider-value="[0,1000]"  style="width:'100%''"/>
-		            </li>
-		            <li class="sliders_street">
-						<h4>Selected range:&nbsp;<span id="street_kpi_slider_range" class="subheading"></span></h4>
-		            </li>
+		            	           <li><hr></li>
+		            
 		            <li class="sliders_street">
 		        			<h3>SCALE:</h3>
 		            </li>
@@ -200,6 +196,13 @@
 		            </li>
 		            <li class="sliders_street"><svg id="legend_street_map" class="legend_map"></svg>
 		            </li>
+		            <li class="sliders_street" style ="margin-top:-0.7em">
+		            		<input id="street_kpi_slider" type="text" class="nyc_slider" data-slider-step="1" data-slider-value="[0,1000]"  style="width:'100%''"/>
+		            </li>
+		            <li class="sliders_street">
+						<h4>Selected range:&nbsp;<span id="street_kpi_slider_range" class="subheading"></span></h4>
+		            </li>
+		            
 	            </ul>           
             </div>
           </div>
@@ -210,29 +213,33 @@
 
       </section>
       
-      <section class="nyc-section p-3 p-lg-5 d-flex flex-column" id="experience">
+      <section class="nyc-section p-3 p-lg-5 d-flex flex-column" id="link_area_section">
         <div class="my-auto">
         
-          <h2 class="mb-3">Area Safety Analytics</h2>
+          <h2 class="mb-3 text-primary">Area Safety Analytics</h2>
 
           <div class="nyc-item d-flex flex-column flex-md-row mb-5" style="margin-bottom:0rem!important">
               <!--<h3 class="mb-0">Junior Web Designer</h3>
               <div class="subheading mb-3">Shout! Media Productions</div> -->
 			  <svg id="area_map" class="graph_area"></svg>
-            <div class="nyc-date text-md-right">
-				<ul class="list-inline list-icons" style="text-align: right;margin-left:0.5em;">
+            <div class="nyc-date text-md-right panel_graph">
+				<ul class="list-inline list-icons" style="text-align: right;margin-left:0.3em">
 		            <li >
-		        			 <h3>Date:</h3>
+		        			 <h3 >Granularity:</h3>
+		            </li>
+		            <li >
+		        			<select class="form-control" id="area_granularity_list" ></select>
+		            </li>
+		            <li >
+		        			 <h3 >Date:</h3>
 		            </li>
 		            <li >
 			            <div class="input-group input-daterange">
 						    <input type="text" class="form-control" id ="area_date_from" value="2012-04-05">
-						    <div class="input-group-addon">to</div>
+						    <div class="input-group-addon text-primary">&nbsp;to&nbsp;</div>
 						    <input type="text" class="form-control" id ="area_date_to" value="2012-04-19">
 						</div>
 		            </li>
-		            
-		            
 		            <li>
 		        			<button class="btn btn-primary " id="area_apply" type="submit">Apply</button>
 		            </li>
@@ -246,19 +253,21 @@
 		            <li >
 		        			<select class="form-control" id="area_kpi_list" ></select>
 		            </li>
-		            <li class="sliders_area">
-		            		<input id="area_kpi_slider" type="text" class="nyc_slider" data-slider-step="1" data-slider-value="[0,1000]"  style="width:'100%''"/>
-		            </li>
-		            <li class="sliders_area">
-						<h4>Selected range:&nbsp;<span id="area_kpi_slider_range" class="subheading"></span></h4>
-		            </li>
-		            <li class="sliders_area">
+		            	           <li><hr></li>
+		            
+		           <li class="sliders_area">
 		        			<h3>SCALE:</h3>
 		            </li>
 		            <li class="sliders_area">
 		        			<select class="form-control" id="area_scale_list" ></select>
 		            </li>
 		            <li class="sliders_area"><svg id="legend_area_map" class="legend_map"></svg>
+		            </li> 
+		            <li class="sliders_area" style ="margin-top:-0.7em">
+		            		<input id="area_kpi_slider" type="text" class="nyc_slider" data-slider-step="1" data-slider-value="[0,1000]"  style="width:'100%''"/>
+		            </li>
+		            <li class="sliders_area">
+						<h4>Selected range:&nbsp;<span id="area_kpi_slider_range" class="subheading"></span></h4>
 		            </li>
 	            </ul>           
             </div>

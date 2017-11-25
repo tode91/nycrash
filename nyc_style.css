@@ -39,22 +39,22 @@
 .nyc{
   fill: #082952;		
   stroke: #082952;
-  stroke-width: 0.5px;
+  stroke-width: 0.25px;
   stroke-linejoin: round;
   stroke-linecap: round;
 }
 
 .subarea{
   fill:#082952;
-  stroke: #082952;
+  stroke: white;
   stroke-width: 0.5px;
   stroke-linejoin: round;
   stroke-linecap: round;
 }
 
 hr{
-	color:#082952;
-	background-color:#082952;	
+	color:#343a40;
+	background-color:#343a40;	
 }
 
 .loader {
@@ -92,4 +92,18 @@ hr{
 
 .bootstrap-table.table{
 	border:1px solid #082952;
+}
+
+
+body{
+	background-color:#F0F0F0;
+}
+
+section{
+	background-color:white;
+	margin:2em 1em 2em 1em;
+}
+
+.panel_graph{
+	width:32%;
 }
