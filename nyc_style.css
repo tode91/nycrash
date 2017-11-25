@@ -90,8 +90,13 @@ hr{
 	width:100%
 }
 
-.bootstrap-table.table{
-	border:1px solid #082952;
+table{
+	color:#343a40
+}
+
+thead{
+	background-color:#082952;
+	color:white;
 }
 
 
