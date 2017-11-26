@@ -1,5 +1,5 @@
 var kpi_list = []
-var server_host="http://localhost:8888/"
+var server_host="https://sheltered-peak-36566.herokuapp.com/"
 	
 	
 var projection, zoom, drag ;
